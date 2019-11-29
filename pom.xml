@@ -39,11 +39,42 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.axonframework</groupId>
 			<artifactId>axon-spring-boot-starter</artifactId>
 			<version>4.2.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.axonframework</groupId>
+					<artifactId>axon-server-connector</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.axonframework.extensions.jgroups</groupId>
+			<artifactId>axon-jgroups-spring-boot-starter</artifactId>
+			<version>4.2</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.axonframework.extensions.jgroups</groupId>
+			<artifactId>axon-distributed-commandbus-jgroups</artifactId>
+			<version>4.0-RC1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.axonframework</groupId>
+			<artifactId>axon-messaging</artifactId>
+			<version>4.2.1</version>
+		</dependency> -->
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.8</version>
 		</dependency>
 	</dependencies>
 
