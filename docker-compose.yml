@@ -19,6 +19,8 @@ services:
     networks:
       app_net:
         ipv4_address: 172.16.238.10
+    environment:
+      IS_PRODUCER: 'no'
   axon2:
     depends_on: ['postgresaxon', 'axon1']
     image: axontest
@@ -27,7 +29,8 @@ services:
     networks:
       app_net:
         ipv4_address: 172.16.238.20
-    entrypoint: java -Djava.net.preferIPv4Stack=true -jar axontest-0.0.1-SNAPSHOT.jar published_messagezxc
+    environment:
+      IS_PRODUCER: 'yes'
 
 networks:
   app_net:

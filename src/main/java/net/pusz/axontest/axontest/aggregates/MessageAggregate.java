@@ -1,5 +1,8 @@
 package net.pusz.axontest.axontest.aggregates;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -33,6 +36,19 @@ public class MessageAggregate {
         this.id = messageReceivedEvent.getId();
         this.message = messageReceivedEvent.getMessage();
 
-        Log.info("!!!!!!!!!!!!!!!!" + this.message);
+        Log.info(GetMachineName() + ": " + this.message);
+    }
+
+    private String GetMachineName() {
+        String hostname = "Unknown";
+
+        try {
+            InetAddress addr;
+            addr = InetAddress.getLocalHost();
+            hostname = addr.getHostName();
+        } catch (UnknownHostException ex) {
+        }
+
+        return hostname;
     }
 }
