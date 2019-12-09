@@ -60,16 +60,11 @@
 			<artifactId>axon-jgroups-spring-boot-starter</artifactId>
 			<version>4.2</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.axonframework.extensions.jgroups</groupId>
-			<artifactId>axon-distributed-commandbus-jgroups</artifactId>
-			<version>4.0-RC1</version>
-		</dependency>
 		<dependency>
-			<groupId>org.axonframework</groupId>
-			<artifactId>axon-messaging</artifactId>
-			<version>4.2.1</version>
-		</dependency> -->
+			<groupId>org.jgroups.kubernetes</groupId>
+			<artifactId>jgroups-kubernetes</artifactId>
+			<version>1.0.14.Final</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>

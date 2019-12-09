@@ -9,7 +9,7 @@ services:
       app_net:
         ipv4_address: 172.16.238.2
     environment: 
-      POSTGRES_PASSWORD: Dupa123
+      POSTGRES_PASSWORD: Test123
       POSTGRES_DB: axondb
   axon1:
     depends_on: ['postgresaxon']
