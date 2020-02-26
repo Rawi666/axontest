@@ -1,36 +1,39 @@
 package net.pusz.axontest.axontest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import lombok.var;
-import net.pusz.axontest.axontest.services.MessageCommandService;
+import lombok.extern.slf4j.Slf4j;
+import net.pusz.axontest.axontest.commands.CreateMessageAggregate;
+import net.pusz.axontest.axontest.commands.SendMessageCommand;
 
 @Component
+@Slf4j
 public class CommandLine implements CommandLineRunner {
-    private static Logger Log = LoggerFactory.getLogger(CommandLine.class);
-    private MessageCommandService messageCommandService;
+    private CommandGateway commandGateway;
 
-    public CommandLine(MessageCommandService messageCommandService) {
-        super();
-        this.messageCommandService = messageCommandService;
+    @Autowired
+    public CommandLine(CommandGateway commandGateway) {
+        this.commandGateway = commandGateway;
     }
 
     @Override
     public void run(String... args) throws Exception {
         var isProducer = System.getenv("IS_PRODUCER");
         if (isProducer != null && isProducer.equalsIgnoreCase("yes")) {
-            Log.info("-==Starting producer==-");
-            var msg = "MessageZXC";
+            log.info("-==Starting producer==-");
+            var msg = "MessageABC";
+
+            commandGateway.send(new CreateMessageAggregate("CONST_ID"));
 
             for (int i = 0; i < 100; i++) {
-                messageCommandService.sendMessage(msg + i);
+                commandGateway.send(new SendMessageCommand("CONST_ID", msg + i));
                 Thread.sleep(1000);
             }
         } else {
-            Log.info("-==Starting consumer==-");
+            log.info("-==Starting consumer==-");
         }
     }
 

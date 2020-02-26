@@ -36,6 +36,7 @@ spec:
                 fieldRef:
                   fieldPath: metadata.labels['jgroups']
           image: rawi666/axontest:latest
+          imagePullPolicy: Always
           name: axonproducer
           ports:
             - containerPort: 7800

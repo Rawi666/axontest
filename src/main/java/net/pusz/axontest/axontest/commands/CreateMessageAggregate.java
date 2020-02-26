@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class SendMessageCommand {
+public class CreateMessageAggregate {
     @TargetAggregateIdentifier
     private String id;
-    private String message;
 }

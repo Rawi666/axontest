@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class MessageReceivedEvent {
+public class AggregateCreatedEvent {
     private String id;
-    private String message;
 }
